@@ -89,18 +89,17 @@ Folly（ Facebook Open Source Library）是Facebook在2012年开源的C++11组�
     for(const auto& i : val_.accessAllThreads()) {
       ret += i;
     }  
-上述代码片段等同于：
+作为一种C++11中出现的syntax sugar，上述代码片段等同于：
 
     Accessor accessor = val_.accessAllThreads();  // 获取StaticMeta<Tag>::lock_指示的锁
     for(const auto &i = accessor.begin(); i != accessor.end(); ++accessor) {  // accessor.begin()返回一个Iterator对象，因此i是Accessor::Iterator类型
       ret += i;
     }
 
-Accessor作为一种C++11中出现的syntax sugar，与Java语言中的Iterable类似，用于标识某个东西是可迭代的，从而可用在for循环语句中，这就不知道是谁借鉴谁。^_^
+可比较的是，这与Java语言中的Iterable类似，用于标识某个东西是可迭代的，从而就可用在for循环语句中进行迭代。这就不知道是谁借鉴谁。^_^
 
 ----------
-1. 文章同步post在Github: [ThreadLocalPtr](https://github.com/halty/writing/blob/master/Folly_Source_Insight_Series-ThreadLocalPtr.md)
-2. 扫描下面二维码，关注公众号[**一线工程师**]，不定时干货分享！^_^
+扫描下面二维码，关注公众号[**一线工程师**]，不定时干货分享！^_^
 
 ![一线工程师 | Engineer_First](img/weixinPub_qrcode_258.jpg)
 
